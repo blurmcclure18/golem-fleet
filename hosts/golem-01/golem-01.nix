@@ -5,9 +5,8 @@
   	../common.nix
 	./hardware-configuration.nix
 	];
-  networking.hostName = "golem-01";
 
-  time.timeZone = "America/Chicago";
+  networking.hostName = "golem-01";
 
   # Optional: configure static IP or WiFi here
 }

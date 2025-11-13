@@ -1,4 +1,3 @@
-
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
@@ -8,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
     ];
 
     boot = {
@@ -43,6 +43,7 @@
   # Enable nix experimental settings
   nix.settings.experimental-features = ["nix-command" "flakes"]
 
+   networking.hostName = "Golem-XX"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -141,23 +142,6 @@
      neovim
    ];
 
-
-   systemd.services.golem-provider = {
-       description = "Golem Provider Node";
-       after = [ "network-online.target" ];
-       wantedBy = [ "multi-user.target" ];
-   
-       serviceConfig = {
-         ExecStart = "${pkgs.yagna}/bin/yagna service run";
-         Restart = "always";
-         User = "golem";
-         WorkingDirectory = "/home/golem";
-         Environment = "RUST_LOG=info";
-       };
-     };
-
-
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -202,5 +186,4 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
 
