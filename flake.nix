@@ -13,11 +13,11 @@
       in {
         packages.yagna = pkgs.stdenv.mkDerivation {
           pname = "yagna";
-          version = "0.14.0";
+          version = "0.17.6";
 
           src = pkgs.fetchurl {
-            url = "https://github.com/golemfactory/yagna/releases/download/v0.14.0/yagna-linux-amd64.tar.gz";
-            sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # replace later
+            url = "https://github.com/golemfactory/yagna/releases/download/v0.17.6/golem-provider-linux-v0.17.6.tar.gz";
+            sha256 = "0s3xf5qmkacrjyabbcs2k8k3ljsm54r4mqlsp01sfz7v88xy5vrs"; # replace later
           };
 
           installPhase = ''
@@ -27,19 +27,11 @@
         };
       }) // {
         nixosConfigurations = {
-          laptop1 = nixpkgs.lib.nixosSystem {
+          golem-01 = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
               ./hosts/common.nix
-              ./hosts/laptop1.nix
-            ];
-          };
-
-          laptop2 = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./hosts/common.nix
-              ./hosts/laptop2.nix
+              ./hosts/golem-01.nix
             ];
           };
         };
