@@ -1,4 +1,3 @@
-
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
@@ -41,25 +40,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable nix experimental settings
-  nix.settings.experimental-features = ["nix-command" "flakes"]
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-   networking.wireless = {
-	enable = true;
-
-	networks = {
-	  "Guest" = {
-	     auth = "none";
-	  };
-	};
-
-	useDHCP = true;
-   };
-
-
   # Set your time zone.
    time.timeZone = "America/Chicago";
 
@@ -76,22 +61,22 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+   services.xserver.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "caps:escape";
+   services.xserver.xkb.layout = "us";
+   services.xserver.xkb.options = "caps:escape";
 
   # Enable Plasma6 desktop environment
-  # services.desktopManager.plasma6.enable = true;
+   services.desktopManager.plasma6.enable = true;
 
   # Enable the SDDM display manager
-  # services.displayManager.sddm.enable = true;
+   services.displayManager.sddm.enable = true;
   # services.displayManager.sddm.wayland.enable = true;
   # services.xserver.displayManger.sddm.enable = true;
-  # services.displayManager.defaultSession = "plasmax11";
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "golem";
+   services.displayManager.defaultSession = "plasma";
+   services.displayManager.autoLogin.enable = true;
+   services.displayManager.autoLogin.user = "golem";
 
   # Set the default shell for all users
    programs.zsh.enable = true;
@@ -133,12 +118,14 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
-     vim
-     wget
-     git
+     alacritty
      curl
+     firefox
+     git
      jq
      neovim
+     vim
+     wget
    ];
 
 

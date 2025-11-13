@@ -15,8 +15,6 @@
 	# Enable Systemd initrd
 	initrd.systemd.enable = true;
 
-	];
-
 	# Hide the OS choice for bootloaders
 	# It's still possible to open the bootloader list by pressing any key
 	# It will just not appear on screen unless a key is pressed
@@ -108,12 +106,14 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
-     vim
-     wget
-     git
+     alacritty
      curl
+     firefox
+     git
      jq
      neovim
+     vim
+     wget
    ];
 
   # Some programs need SUID wrappers, can be configured further or are
