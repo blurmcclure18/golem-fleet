@@ -12,28 +12,15 @@
 
     boot = {
 
-	plymouth = {
-		enable = true;
-	};
-
 	# Enable Systemd initrd
 	initrd.systemd.enable = true;
 
-	# Enable Silent Boot
-	consoleLogLevel = 3;
-	initrd.verbose = false;
-	kernelParams = [
-		"quiet"
-		"splash"
-		"boot.shell_on_fail"
-		"udev.log_priority=3"
-		"rd.systemd.show_status=auto"
 	];
 
 	# Hide the OS choice for bootloaders
 	# It's still possible to open the bootloader list by pressing any key
 	# It will just not appear on screen unless a key is pressed
-	loader.timeout = 0;
+	loader.timeout = 3;
     };
 
   # Use the systemd-boot EFI boot loader.
@@ -46,18 +33,7 @@
    networking.hostName = "Golem-XX"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-   networking.wireless = {
-	enable = true;
-
-	networks = {
-	  "Guest" = {
-	     auth = "none";
-	  };
-	};
-   };
-
+   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
    time.timeZone = "America/Chicago";
@@ -75,22 +51,22 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+   services.xserver.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "caps:escape";
+   services.xserver.xkb.layout = "us";
+   services.xserver.xkb.options = "caps:escape";
 
   # Enable Plasma6 desktop environment
-  # services.desktopManager.plasma6.enable = true;
+   services.desktopManager.plasma6.enable = true;
 
   # Enable the SDDM display manager
-  # services.displayManager.sddm.enable = true;
+   services.displayManager.sddm.enable = true;
   # services.displayManager.sddm.wayland.enable = true;
   # services.xserver.displayManger.sddm.enable = true;
-  # services.displayManager.defaultSession = "plasmax11";
-  # services.displayManager.autoLogin.enable = true;
-  # services.displayManager.autoLogin.user = "golem";
+   services.displayManager.defaultSession = "plasma";
+   services.displayManager.autoLogin.enable = true;
+   services.displayManager.autoLogin.user = "golem";
 
   # Set the default shell for all users
    programs.zsh.enable = true;
