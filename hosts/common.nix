@@ -5,7 +5,7 @@
 
   users.users.golem = {
     isSystemUser = true;
-    home = "/var/lib/golem";
+    home = "/home/golem";
   };
 
   systemd.services.golem-provider = {
@@ -17,7 +17,7 @@
       ExecStart = "${pkgs.yagna}/bin/yagna service run";
       Restart = "always";
       User = "golem";
-      WorkingDirectory = "/var/lib/golem";
+      WorkingDirectory = "/home/golem";
       Environment = "RUST_LOG=info";
     };
   };
@@ -44,7 +44,8 @@
   	curl 
 	jq 
 	git
-
+	vim
+	nvim
   ];
 }
 
