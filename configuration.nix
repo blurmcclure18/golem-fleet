@@ -41,7 +41,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable nix experimental settings
-  nix.settings.experimental-features = ["nix-command" "flakes"]
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
    networking.hostName = "Golem-XX"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -56,8 +56,6 @@
 	     auth = "none";
 	  };
 	};
-
-	useDHCP = true;
    };
 
 
